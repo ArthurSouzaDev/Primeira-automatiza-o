@@ -1,0 +1,6 @@
+Instruções de uso:
+1- Primeiramente installe o GeckoDriver
+2- Pelo cmd utilize o pip install selenium
+3- Recomendo utiliza um navegador que não utilize muito, apenas para ser automatizado
+4- Entre no site que deseja, e nos campos onde deve clicar, clique com botão direito, inpsecione, vá na linha de código e copie em XPATH
+5- Segue as instruções da documentação
