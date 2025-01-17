@@ -40,7 +40,7 @@ def buttonClick(identificador): #Função criada para clicar
     button.click()
 
 def keysClick(identificador): #Função criada para digitar
-    elem = driver.find_element(By.XPATH,identificador)
+    button = driver.find_element(By.XPATH,identificador)
     try:
     # Espera até que o botão esteja clicável (máximo 10 segundos)
         button = WebDriverWait(driver, 10).until(
@@ -49,7 +49,7 @@ def keysClick(identificador): #Função criada para digitar
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
     button.click()
-    elem.send_keys("CGU DO ALUNO") #Seu CGU aqui
+    button.send_keys("CGU DO ALUNO") #Seu CGU aqui
     
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
