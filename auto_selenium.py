@@ -29,27 +29,26 @@ chrome_options.add_argument("--headless")
 #Utilizando o expected conditions nas duas funções para ser mais útil que o sleep, assim 
 #a função só irá rodar se o elemento aparecer na tela, ao invés de apenas aguardar um tempo específico
 def buttonClick(identificador): #Função criada para clicar
-    button = driver.find_element(By.XPATH,identificador)
     try:
-    # Espera até que o botão esteja clicável (máximo 10 segundos)
+        # Espera até que o botão esteja clicável (máximo 10 segundos)
         button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "botao-id"))
-    )
+            EC.element_to_be_clickable((By.XPATH, identificador))
+        )
+        button.click()
     except Exception as e:
-        print(f"Ocorreu um erro: {e}")
-    button.click()
+        print(f"Ocorreu um erro 1: {e}")
+
 
 def keysClick(identificador): #Função criada para digitar
-    button = driver.find_element(By.XPATH,identificador)
     try:
-    # Espera até que o botão esteja clicável (máximo 10 segundos)
+        # Espera até que o botão esteja clicável (máximo 10 segundos)
         button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "botao-id"))
-    )
+            EC.element_to_be_clickable((By.XPATH, identificador))
+        )
+        button.click()
+        button.send_keys("135688210")  # Seu CGU aqui
     except Exception as e:
-        print(f"Ocorreu um erro: {e}")
-    button.click()
-    button.send_keys("135688210") #Seu CGU aqui
+        print(f"Ocorreu um erro 2: {e}")
     
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
