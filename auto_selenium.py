@@ -2,25 +2,59 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
+#Nas linhas abaixo foi importado webdriveManager que atualiza o webdriver automaticamente
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriveManager
+
+#Na linha abaixo foi adicionado Options para deixar o navegador no modo Headless, apenas interface gráfica 
+#para reduzir custos de processamento
+from selenium.webdriver.chrome.options import Options
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 #Importações das bibliotecas necessárias
 
+driver = webdriver.Chrome(
+    service=Service(
+        ChromeDriveManager().install()
+    )
+)
+#A linha de código acima atualiza automaticamente o webdriver dos navegadores sem ter que atualizar manualmente
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+#Utilizando o modo headless do navegador para otimizar e reduzir o custo de processamento.
+
+#Utilizando o expected conditions nas duas funções para ser mais útil que o sleep, assim 
+#a função só irá rodar se o elemento aparecer na tela, ao invés de apenas aguardar um tempo específico
 def buttonClick(identificador): #Função criada para clicar
     button = driver.find_element(By.XPATH,identificador)
-    sleep(1)
+    try:
+    # Espera até que o botão esteja clicável (máximo 10 segundos)
+        button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "botao-id"))
+    )
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
     button.click()
-    sleep(2)
-    
+
 def keysClick(identificador): #Função criada para digitar
     elem = driver.find_element(By.XPATH,identificador)
-    sleep(1)
-    elem.click()
+    try:
+    # Espera até que o botão esteja clicável (máximo 10 segundos)
+        button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "botao-id"))
+    )
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
+    button.click()
     elem.send_keys("CGU DO ALUNO") #Seu CGU aqui
     
-driver = webdriver.Firefox()
-#Webdriver do firefox, lembrando que o GeckoDriver tem que ser colocado na pasta
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
 
+#Após importar as bibliotecas e criar a função, iremos rodar o código nas variáveis abaixo com a xpath de cada elemento
 usuarioAcesso = buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")
 cguAcesso = keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input")
 identifica = buttonClick("/html/body/form/table/tbody/tr[2]/td/input")
