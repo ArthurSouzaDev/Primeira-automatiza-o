@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 #Nas linhas abaixo foi importado webdriveManager que atualiza o webdriver automaticamente
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriveManager
+from webdriver_manager.chrome import ChromeDriverManager
 
 #Na linha abaixo foi adicionado Options para deixar o navegador no modo Headless, apenas interface gráfica 
 #para reduzir custos de processamento
@@ -17,7 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome(
     service=Service(
-        ChromeDriveManager().install()
+        ChromeDriverManager().install()
     )
 )
 #A linha de código acima atualiza automaticamente o webdriver dos navegadores sem ter que atualizar manualmente
@@ -49,7 +49,7 @@ def keysClick(identificador): #Função criada para digitar
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
     button.click()
-    button.send_keys("CGU DO ALUNO") #Seu CGU aqui
+    button.send_keys("135688210") #Seu CGU aqui
     
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
