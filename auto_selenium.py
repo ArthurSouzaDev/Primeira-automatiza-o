@@ -54,12 +54,19 @@ driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
 
 #Após importar as bibliotecas e criar a função, iremos rodar o código nas variáveis abaixo com a xpath de cada elemento
-usuarioAcesso = buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")
-cguAcesso = keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input")
-identifica = buttonClick("/html/body/form/table/tbody/tr[2]/td/input")
-emprestimoAcesso = buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")
-renovarEmprestimo = buttonClick('//*[@id="bold"]')
-#Variáveis de acesso 
+try:
 
-driver.quit()  # Use quit() para fechar o navegador completamente
-print("Sucesso! Os livros foram renovados!")
+    usuarioAcesso = buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")
+    cguAcesso = keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input")
+    identifica = buttonClick("/html/body/form/table/tbody/tr[2]/td/input")
+    emprestimoAcesso = buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")
+    renovarEmprestimo = buttonClick('//*[@id="bold"]')
+    print("Sucesso! Os livros foram renovados!")
+
+#Variáveis de acesso 
+except Exception as e:
+    print(f"Ocorreu um erro aqui: {e}")
+
+finally:
+    print("Programa encerrado com sucesso!")
+    driver.quit()  # Use quit() para fechar o navegador completamente
