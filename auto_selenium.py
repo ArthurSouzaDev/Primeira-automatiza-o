@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from time import sleep
 #Nas linhas abaixo foi importado webdriveManager que atualiza o webdriver automaticamente
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -46,19 +45,21 @@ def buttonClick(identificador): #Função criada para clicar
         print(f"Ocorreu um erro ao clicar no botão: {e}")
 
 
-def keysClick(identificador): #Função criada para digitar
+def keysClick(identificador,codigo): #Função criada para digitar
     try:
         # Espera até que o botão esteja clicável (máximo 10 segundos)
         button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, identificador))
         )
         button.click()
-        button.send_keys("135688210")  # Seu CGU aqui
+        button.send_keys(codigo)  # Seu CGU aqui
     except Exception as e:
         print(f"Erro ao digitar no campo: {e}")
     
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
+
+codigo = input("Digite o seu CGU: ")
 
 #Após importar as bibliotecas e criar a função, iremos rodar o código nas variáveis abaixo com a xpath de cada elemento
 # Fluxo principal
@@ -67,7 +68,7 @@ def main():
 
     try:
         buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")  # Acessar página
-        keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input", "135688210")  # CGU
+        keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input", codigo)  # CGU
         buttonClick("/html/body/form/table/tbody/tr[2]/td/input")  # Confirmar login
         buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")  # Acessar empréstimos
         buttonClick('//*[@id="bold"]')  # Renovar
