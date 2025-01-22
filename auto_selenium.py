@@ -26,6 +26,13 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 #Utilizando o modo headless do navegador para otimizar e reduzir o custo de processamento.
 
+#Código abaixo para ativar o navegador Headless
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()),
+    options=chrome_options
+)
+
+
 #Utilizando o expected conditions nas duas funções para ser mais útil que o sleep, assim 
 #a função só irá rodar se o elemento aparecer na tela, ao invés de apenas aguardar um tempo específico
 def buttonClick(identificador): #Função criada para clicar
@@ -36,7 +43,7 @@ def buttonClick(identificador): #Função criada para clicar
         )
         button.click()
     except Exception as e:
-        print(f"Ocorreu um erro 1: {e}")
+        print(f"Ocorreu um erro ao clicar no botão: {e}")
 
 
 def keysClick(identificador): #Função criada para digitar
@@ -48,25 +55,28 @@ def keysClick(identificador): #Função criada para digitar
         button.click()
         button.send_keys("135688210")  # Seu CGU aqui
     except Exception as e:
-        print(f"Ocorreu um erro 2: {e}")
+        print(f"Erro ao digitar no campo: {e}")
     
 driver.get("https://servicos.ulbra.br/ALEPH")
 #Driver.get recebendo o endereço da Ulbra
 
 #Após importar as bibliotecas e criar a função, iremos rodar o código nas variáveis abaixo com a xpath de cada elemento
-try:
+# Fluxo principal
+def main():
+    driver.get("https://servicos.ulbra.br/ALEPH")
 
-    usuarioAcesso = buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")
-    cguAcesso = keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input")
-    identifica = buttonClick("/html/body/form/table/tbody/tr[2]/td/input")
-    emprestimoAcesso = buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")
-    renovarEmprestimo = buttonClick('//*[@id="bold"]')
-    print("Sucesso! Os livros foram renovados!")
+    try:
+        buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")  # Acessar página
+        keysClick("/html/body/form/table/tbody/tr[1]/td[2]/input", "135688210")  # CGU
+        buttonClick("/html/body/form/table/tbody/tr[2]/td/input")  # Confirmar login
+        buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")  # Acessar empréstimos
+        buttonClick('//*[@id="bold"]')  # Renovar
+        print("Sucesso! Os livros foram renovados!")
+    except Exception as e:
+        print(f"Erro no fluxo principal: {e}")
+    finally:
+        print("Programa encerrado com sucesso!")
+        driver.quit()
 
-#Variáveis de acesso 
-except Exception as e:
-    print(f"Ocorreu um erro aqui: {e}")
-
-finally:
-    print("Programa encerrado com sucesso!")
-    driver.quit()  # Use quit() para fechar o navegador completamente
+if __name__ == "__main__":
+    main()
