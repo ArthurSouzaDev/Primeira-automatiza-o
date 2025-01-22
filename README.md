@@ -5,3 +5,6 @@ adicionar o webdrivemanager que atualiza os web drivers automaticamente,
 Adicionar a opção de navegador Headless para reduzir custos de processamento
 Adicionar Excpected conditions removendo o sleep
 E assim iremos atualizando, irei testar uma forma de avisar caso dê algum erro e do usuário selecionar o tipo de livro para o programa rodar com base nisso!
+
+Recentemente adicionado alguns elementos para melhorar o código, pedi ao chat gpt para dar uma olhada e corrigir os possíveis erros
+Tenho alguns projetos futuros para melhorar essa automação e poder compartilhar em forma de executável nas férias, e ao mesmo tempo aprendendo selenium para me preparar um pouco para o mercado de trabalho
