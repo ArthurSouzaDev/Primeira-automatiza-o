@@ -1,10 +1,32 @@
-Além das instruções aqui estará a documentação do projeto de automatização, e a razão para essa automatização ser criada! 
-Razão da criação:Esqueci de renovar e acabei pagando uma taxa alta de livros na biblioteca, então criei essa automatização para não ter que preocupar
-Atualmente estamos na versão V2, Melhorei algumas coisas da primeira versão como:
-adicionar o webdrivemanager que atualiza os web drivers automaticamente, 
-Adicionar a opção de navegador Headless para reduzir custos de processamento
-Adicionar Excpected conditions removendo o sleep
-E assim iremos atualizando, irei testar uma forma de avisar caso dê algum erro e do usuário selecionar o tipo de livro para o programa rodar com base nisso!
+# Automação de Renovação de Livros - Selenium
 
-Recentemente adicionado alguns elementos para melhorar o código, pedi ao chat gpt para dar uma olhada e corrigir os possíveis erros
-Tenho alguns projetos futuros para melhorar essa automação e poder compartilhar em forma de executável nas férias, e ao mesmo tempo aprendendo selenium para me preparar um pouco para o mercado de trabalho
+Este projeto implementa uma automação utilizando Selenium para renovar livros no sistema da **ULBRA**. A aplicação simula interações no navegador e permite que o usuário escolha entre os navegadores Chrome, Firefox ou Edge para executar o script.
+
+## 🚀 Funcionalidades
+
+- Suporte aos navegadores Chrome, Firefox e Edge.
+- Execução no modo **headless** (sem interface gráfica) para melhor desempenho.
+- Login automatizado no sistema da ULBRA.
+- Renovação de livros emprestados.
+- Verificação de mensagens de confirmação ou erro.
+
+## 🛠 Tecnologias Utilizadas
+
+- [Python](https://www.python.org/)
+- [Selenium](https://www.selenium.dev/)
+- [WebDriverManager](https://github.com/SergeyPirogov/webdriver_manager)
+
+## 📋 Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas:
+
+- [Python 3.8+](https://www.python.org/downloads/)
+- Gerenciador de pacotes `pip`
+
+## ⚙️ Instalação
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   cd nome-do-repositorio
