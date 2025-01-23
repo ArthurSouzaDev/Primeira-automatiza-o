@@ -1,6 +1,0 @@
-Instruções de uso:
-1- Primeiramente installe o GeckoDriver e coloque em sua pasta
-2- Pelo cmd utilize o pip install selenium e pip install GeckoDriver
-3- O programa está configurado para funcionar no Chrome, já com Headless ativo
-4- Entre no site que deseja, e nos campos onde deve clicar, clique com botão direito, inpsecione, vá na linha de código e copie em XPATH
-5- Segue as instruções da documentação
