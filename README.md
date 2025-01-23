@@ -57,7 +57,7 @@ A automação realizará o login, acessará a área de empréstimos e tentará r
 
 Funções principais:
 
-inicializar(navegador): Configura o WebDriver com o navegador selecionado.
+- inicializar(navegador): Configura o WebDriver com o navegador selecionado.
 buttonClick(identificador): Clica em elementos na página.
 keysClick(identificador, codigo): Preenche campos de texto.
 verificar_mensagem(identificador, mensagem_esperada): Verifica mensagens exibidas na página.
