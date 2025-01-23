@@ -32,9 +32,6 @@ Certifique-se de ter as seguintes ferramentas instaladas:
    cd nome-do-repositorio
 ## Instale as dependências:
 
-bash
-Copiar
-Editar
 ````bash
 pip install -r requirements.txt
 ````
@@ -48,7 +45,7 @@ webdriver_manager
 Execute o script:
 
 ```bash
-python nome-do-script.py
+python auto_selenium.py
 ``` 
 Escolha o navegador (Chrome, Firefox ou Edge).
 
@@ -79,7 +76,7 @@ Este projeto é apenas para fins educacionais. Certifique-se de ter permissão p
 Use o script de forma responsável, respeitando os termos de uso do serviço.
 
 ## 📧 Contato
-Para dúvidas ou sugestões, sinta-se à vontade para entrar em contato comigo: seu-email@exemplo.com
+Para dúvidas ou sugestões, sinta-se à vontade para entrar em contato comigo: almeidaarthur128@gmail.com
 
 Feito com ❤️ e Selenium.
 
