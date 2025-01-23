@@ -30,7 +30,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
    ```bash
    git clone https://github.com/seu-usuario/nome-do-repositorio.git
    cd nome-do-repositorio
-Instale as dependências:
+## Instale as dependências:
 
 bash
 Copiar
@@ -38,7 +38,7 @@ Editar
 ````bash
 pip install -r requirements.txt
 ````
-Adicione o arquivo requirements.txt com as seguintes dependências:
+## Adicione o arquivo requirements.txt com as seguintes dependências:
 
 ```bash
 selenium
@@ -56,7 +56,7 @@ Insira o seu CGU quando solicitado.
 
 A automação realizará o login, acessará a área de empréstimos e tentará renovar os livros disponíveis.
 
-📝 Estrutura do Código
+## 📝 Estrutura do Código
 
 Funções principais:
 
@@ -69,16 +69,16 @@ Inicializa o navegador escolhido.
 Realiza as etapas de login, navegação e renovação.
 Exibe mensagens de sucesso ou erro.
 
-🔍 Observações
+## 🔍 Observações
 
 O script está configurado para acessar diretamente o site da ULBRA no endereço: https://servicos.ulbra.br/ALEPH.
 Certifique-se de que o XPath utilizado no código corresponde ao layout atual do site, pois mudanças no design podem causar falhas na automação.
 
-🛡️ Cuidados
+## 🛡️ Cuidados
 Este projeto é apenas para fins educacionais. Certifique-se de ter permissão para automatizar ações no site antes de usar.
 Use o script de forma responsável, respeitando os termos de uso do serviço.
 
-📧 Contato
+## 📧 Contato
 Para dúvidas ou sugestões, sinta-se à vontade para entrar em contato comigo: seu-email@exemplo.com
 
 Feito com ❤️ e Selenium.
