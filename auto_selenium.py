@@ -7,7 +7,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
-from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
@@ -78,12 +77,10 @@ def keysClick(identificador,codigo): #Função criada para digitar
         # Espera até que o botão esteja clicável (máximo 10 segundos)
         button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, identificador)) #variável identificador recebe o xpath onde deve ser clicado!
-        )
-        button.click()
-        button.send_keys(codigo)  # Seu CGU aqui
+        ).send_keys(codigo)
     except Exception as e:
         print(f"Erro ao digitar no campo: {e}")
-    
+
 def main():
     navegador = input("Escolha o navegador (chrome, firefox, edge): ").strip().lower()
     
@@ -93,8 +90,7 @@ def main():
         
         # Acessa o site
         driver.get("https://servicos.ulbra.br/ALEPH")
-        
-        codigo = input("Digite o seu CGU: ")
+        codigo = input("Digite o seu CGU: ")        
 
         # Fluxo de automação
         buttonClick("/html/body/table/tbody/tr[2]/td[4]/a")  # Acessar usuário/renovação
@@ -103,7 +99,7 @@ def main():
         buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")  # Acessar empréstimos
         buttonClick('//*[@id="bold"]')  # Renovar livros
         
-        identificador = "/html/body/div[2]/p[2]"  # Exemplo de XPath do elemento
+        identificador = "/html/body/div[2]/p[2]"  #XPath da mensagem esperada! 
         mensagem_esperada = "Não há empréstimos em seu nome no momento."
 
         # Verificar a mensagem
@@ -117,6 +113,8 @@ def main():
     
     finally:
         print("Programa encerrado com sucesso!")
+
+        driver.delete_all_cookies()
         driver.quit()
 
 # Verifica se o script é executado diretamente
