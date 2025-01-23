@@ -1,6 +1,8 @@
+#Importando inicialmente selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+
 #Nas linhas abaixo foi importado webdriveManager que atualiza o webdriver automaticamente
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -16,6 +18,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 
+#Excepted conditions abaixo
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -40,6 +43,8 @@ def inicializar(navegador="chrome"):
         raise ValueError(f"Navegador não suportado: {navegador}")
 
     return driver
+
+#Verificando mensagem para ter certeza se o livro foi renovado ou não!
 def verificar_mensagem(identificador, mensagem_esperada):
     try:
         # Espera até que o elemento com a mensagem esteja visível (máximo 10 segundos)
@@ -49,11 +54,13 @@ def verificar_mensagem(identificador, mensagem_esperada):
         texto = elemento.text
         if texto != mensagem_esperada:
             print(f"Livros foram renovados: {texto}")
+            return True
         else:
             print("Não há empréstimo ativos!.")
             return False
     except Exception as e:
         print(f"Erro ao verificar a mensagem: {e}")
+        return False
 
 #Utilizando o expected conditions nas duas funções para ser mais útil que o sleep, assim 
 def buttonClick(identificador):  # Função criada para clicar
@@ -96,13 +103,14 @@ def main():
         buttonClick("/html/body/table[3]/tbody/tr[1]/td[1]/a")  # Acessar empréstimos
         buttonClick('//*[@id="bold"]')  # Renovar livros
         
-        
         identificador = "/html/body/div[2]/p[2]"  # Exemplo de XPath do elemento
         mensagem_esperada = "Não há empréstimos em seu nome no momento."
 
         # Verificar a mensagem
-        if verificar_mensagem(identificador, mensagem_esperada) != False:
+        if verificar_mensagem(identificador, mensagem_esperada) == True:
             print("Sucesso! Os livros foram renovados!")
+        else:
+            print("Mensagem de erro ou situação esperada não encontrada.")
 
     except Exception as e:
         print(f"Erro no fluxo principal: {e}")
