@@ -82,4 +82,3 @@ Para dúvidas ou sugestões, sinta-se à vontade para entrar em contato comigo: 
 Feito com ❤️ e Selenium.
 
 Caso precise de mais personalizações ou ajustes, é só avisar! 😊
->>>>>>> fed377970dba7b282478683f97ac4f949e179685
